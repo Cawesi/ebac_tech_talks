@@ -9,14 +9,19 @@ const contaTempo = setInterval(function(){
 
     const distanciaEvento = timeStampEvento - timeStampAtual;
 
-    const diasEmMilesegundos = 1000 * 60 * 60 * 24;
-    const horaEmMinuto = 1000 * 60 * 60;
-    const minutosEmMs = 1000 * 60;
+    const diasEmMs = 1000 * 60 * 60 * 24;
+    const horaEmMs = 1000 * 60 * 60;
+    const minutoEmMs = 1000 * 60;
 
-    const dias = Math.floor(distanciaEvento / diasEmMilesegundos);
-    const horas = Math.floor((distanciaEvento % diasEmMilesegundos) / horaEmMinuto);
-    const minutos = Math.floor((distanciaEvento % horaEmMinuto) / minutosEmMs);
-    const segundosAteEvento = Math.floor((distanciaEvento / minutosEmMs) / 1000);
+    const dias = Math.floor(distanciaEvento / diasEmMs);
+    const horas = Math.floor((distanciaEvento % diasEmMs) / horaEmMs);
+    const minutos = Math.floor((distanciaEvento % horaEmMs) / minutoEmMs);
+    const segundosAteEvento = Math.floor((distanciaEvento % minutoEmMs) / 1000);
+
+    console.log("Dias - ", dias)
+    console.log("Horas - ", horas)
+    console.log("Minutos - ", minutos)
+    console.log("Segundos - ", segundosAteEvento)
 
     document.getElementById('contador').innerHTML = `${dias}d ${horas}h ${minutos}m ${segundosAteEvento}s`;
 
